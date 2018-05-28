@@ -1,0 +1,72 @@
+// Global Styles
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+// Main Styles
+
+.main {
+    width: 100%;
+    height: 100%;
+    background: #161616;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content {
+        width: 720px;
+        height: 720px;
+        background: #161616;
+        box-shadow: 4px 16px 24px rgba($color:#000, $alpha:1);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows  : repeat(5, 1fr);
+        border-radius: 16px;
+        overflow: hidden;
+               
+        
+        i {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            
+            @for $i from 1 through 8 {
+                :nth-child(#{$i}) {
+                    width: $i*20%;
+                    height: $i*20%;
+                    animation-delay: $i*-.25s;
+                }
+            }
+            li {
+                list-style: none;
+                position: absolute;
+                width: 50%;
+                height: 50%;
+                border: 1px solid tomato;
+                border-radius: 50%;
+                animation: li-animation 4s ease-in-out forwards infinite;
+                
+                @keyframes li-animation {
+                    0%, 100% {
+                        transform: scale(1.25);
+                    }
+
+                    50% {
+                        transform: scale(2);
+                    }
+                }
+            }
+        }
+    }
+}
